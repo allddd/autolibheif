@@ -259,7 +259,15 @@ def dec_chosedir():
                         decode()
                         break
 
+                    elif pht.endswith('.heic'):
+                        decode()
+                        break
+
                     elif pht.endswith('.HEIF'):
+                        decode()
+                        break
+
+                    elif pht.endswith('.heif'):
                         decode()
                         break
 
@@ -301,7 +309,15 @@ def enc_chosedir():
                         encode()
                         break
 
+                    elif pht.endswith('.JPG'):
+                        encode()
+                        break
+
                     elif pht.endswith('.png'):
+                        encode()
+                        break
+
+                    elif pht.endswith('.PNG'):
                         encode()
                         break
 
@@ -328,10 +344,21 @@ def decode():
             print(f'Converting {pht} to {name_wo}{wish_ext}')
             subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
 
+        elif pht.endswith('.heic'):
+            name_wo = pht[:-5]
+            print(f'Converting {pht} to {name_wo}{wish_ext}')
+            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+
         elif pht.endswith('.HEIF'):
             name_wo = pht[:-5]
             print(f'Converting {pht} to {name_wo}{wish_ext}')
             subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+
+        elif pht.endswith('.heif'):
+            name_wo = pht[:-5]
+            print(f'Converting {pht} to {name_wo}{wish_ext}')
+            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+
     else:
         new_fnum = len(os.listdir())
         conv_num = new_fnum - fnum
@@ -359,10 +386,21 @@ def encode():
             print(f'Converting {pht} to {name_wo}{wish_ext}')
             subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
 
+        elif pht.endswith('.JPG'):
+            name_wo = pht[:-4]
+            print(f'Converting {pht} to {name_wo}{wish_ext}')
+            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+
         elif pht.endswith('.png'):
             name_wo = pht[:-4]
             print(f'Converting {pht} to {name_wo}{wish_ext}')
             subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+
+        elif pht.endswith('.PNG'):
+            name_wo = pht[:-4]
+            print(f'Converting {pht} to {name_wo}{wish_ext}')
+            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+
     else:
         new_fnum = len(os.listdir())
         conv_num = new_fnum - fnum
