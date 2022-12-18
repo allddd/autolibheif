@@ -1,3 +1,8 @@
+[X.X.X] XX/XX/XX
+improvement:
+    - important error messages now wait for user confirmation
+    - minor visual changes in the menus
+
 [1.0.1] 09/12/22
 bug fix:
     - encoding/decoding fails for files with uppercase extension
