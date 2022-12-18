@@ -8,7 +8,7 @@ Type in full path to the photos folder and confirm
 def_prompt = '''Type a number and confirm 
 (leave blank for default)
 ==> '''
-enter = 'Press Enter to return to the main menu'
+enter = 'Press Enter to continue'
 
 #
 undef_errmsg = 'Something went wrong'
@@ -29,8 +29,8 @@ Select the desired conversion quality'''
 
 #
 main_menu = ('''
-[1] Decode (convert HEIC/HEIF image)
-[2] Encode (convert image to HEIC/HEIF)
+[1] Decode (convert HEIC/HEIF file)
+[2] Encode (convert file to HEIC/HEIF)
 [3] Help
 [4] Quit
 ''')
@@ -58,8 +58,8 @@ help_menu = '''
 
 #
 Help = ('''
-Autolibheif is a CLI utility for encoding and 
-decoding the HEIF/HEIC file format.
+Autolibheif is a Linux CLI utility for convenient
+encoding and decoding of the HEIF/HEIC file format.
 
 If you need help at any time, type "h" and confirm
 to get instructions for each individual step.
