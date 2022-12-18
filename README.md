@@ -1,19 +1,20 @@
 # autolibheif
-autolibheif is a Linux CLI utility used to conveniently encode and decode HEIF/HEIC file format, based on [libheif](https://github.com/strukturag/libheif).
+autolibheif is a Linux CLI utility for convenient encoding and decoding of the HEIF/HEIC file format.
 
 Supported formats: **.jpg / .png / .HEIF / .HEIC**
 ## Installation
-### AUR
+### Arch-based distributions
+Manual
 ```
 git clone https://aur.archlinux.org/autolibheif.git
 cd autolibheif/
 makepkg -si
 ```
-or
+Using AUR helpers
 ```
 yay -S autolibheif
 ```
-### Manual installation
+### Other distributions
 **Dependencies:**
 [libheif](https://github.com/strukturag/libheif),
 [python-setuptools](https://github.com/pypa/setuptools)
@@ -25,4 +26,4 @@ cd autolibheif/
 python setup.py install
 ```
 ## Usage
-Open the terminal and type `autolibheif` to launch the utility.
+Launch the utility from a terminal by typing `autolibheif`
