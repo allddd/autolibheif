@@ -250,7 +250,7 @@ def dec_chosedir():
 
             if len(os.listdir(wish_dir)) == 0:
                 print(empty_errmsg)
-                time.sleep(2)
+                goback()
                 continue
 
             else:
@@ -273,12 +273,12 @@ def dec_chosedir():
 
                 else:
                     print(nofiles_errmsg)
-                    time.sleep(2)
+                    goback()
                     continue
 
         else:
             print(f'{new_row}{dir_errmsg}')
-            time.sleep(2)
+            goback()
             continue
 
 
@@ -300,7 +300,7 @@ def enc_chosedir():
 
             if len(os.listdir(wish_dir)) == 0:
                 print(empty_errmsg)
-                time.sleep(2)
+                goback()
                 continue
 
             else:
@@ -323,12 +323,12 @@ def enc_chosedir():
 
                 else:
                     print(nofiles_errmsg)
-                    time.sleep(2)
+                    goback()
                     continue
 
         else:
             print(f'{new_row}{dir_errmsg}')
-            time.sleep(2)
+            goback()
             continue
 
 
@@ -367,10 +367,11 @@ def decode():
             print(f'{succesconv_txt} {conv_num} files')
             os.chdir(cwd)
             goback()
+            main()
 
         else:
             print(undef_errmsg)
-            time.sleep(1)
+            goback()
             os.chdir(cwd)
             main()
 
@@ -409,10 +410,11 @@ def encode():
             print(f'{succesconv_txt} {conv_num} files')
             os.chdir(cwd)
             goback()
+            main()
 
         else:
             print(undef_errmsg)
-            time.sleep(1)
+            goback()
             os.chdir(cwd)
             main()
 
@@ -424,5 +426,4 @@ def clear():
 
 def goback():
     print(enter)
-    os.system('read')
-    main()
+    os.system('read -s')
