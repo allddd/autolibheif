@@ -70,6 +70,11 @@ def decode_menu():
             main()
             break
 
+        elif usr_inp == 'h':
+            print(help_decenc)
+            goback()
+            continue
+
         else:
             print(num_errmsg)
             time.sleep(1)
@@ -100,6 +105,11 @@ def encode_menu():
         elif usr_inp == '3':
             main()
             break
+
+        elif usr_inp == 'h':
+            print(help_decenc)
+            goback()
+            continue
 
         else:
             print(num_errmsg)
@@ -178,6 +188,11 @@ def dec_qty():
             main()
             break
 
+        elif usr_inp == 'h':
+            print(help_qty)
+            goback()
+            continue
+
         else:
             print(num_errmsg)
             time.sleep(1)
@@ -225,6 +240,11 @@ def enc_qty():
             main()
             break
 
+        elif usr_inp == 'h':
+            print(help_qty)
+            goback()
+            continue
+
         else:
             print(num_errmsg)
             time.sleep(1)
@@ -244,6 +264,11 @@ def dec_chosedir():
         if (not wish_dir):
             main()
             break
+
+        elif wish_dir == 'h':
+            print(help_chosedir)
+            goback()
+            continue
 
         elif os.path.isdir(wish_dir):
             print(f'{dirchosen_txt} {wish_dir}{new_row}')
@@ -294,6 +319,11 @@ def enc_chosedir():
         if (not wish_dir):
             main()
             break
+
+        elif wish_dir == 'h':
+            print(help_chosedir)
+            goback()
+            continue
 
         elif os.path.isdir(wish_dir):
             print(f'{dirchosen_txt} {wish_dir}{new_row}')
