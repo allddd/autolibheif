@@ -1,8 +1,7 @@
-[X.X.X] XX/XX/XX
-improvement:
-    - important error messages now wait for user confirmation
-    - minor visual changes in the menus
+[1.0.2] 25/12/22
+[IMPROVEMENT] instructions for each step by typing "h"
+[IMPROVEMENT] important error messages now wait for user confirmation
+[IMPROVEMENT] minor visual changes in the menus
 
 [1.0.1] 09/12/22
-bug fix:
-    - encoding/decoding fails for files with uppercase extension
+[BUG] encoding/decoding fails for files with uppercase extension
