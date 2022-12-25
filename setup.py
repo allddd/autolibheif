@@ -8,7 +8,7 @@ setup(
     name='autolibheif',
     author='allddd',
     author_email='allddd@proton.me',
-    version='1.0.1',
+    version='1.0.2',
     description='CLI utility for encoding and decoding the HEIF/HEIC file format',
     long_description=long_description,
     long_description_content_type="text/markdown",
