@@ -59,13 +59,34 @@ help_menu = '''
 #
 Help = ('''
 Autolibheif is a Linux CLI utility for convenient
-encoding and decoding of the HEIF/HEIC file format.
+encoding and decoding of the HEIF/HEIC file format
 
 If you need help at any time, type "h" and confirm
-to get instructions for each individual step.
+to get instructions for each individual step
 
 Want to report a problem or request a feature ?
-Select option [2] and visit the Github page.
+Select option [2] and visit the Github page
+''')
+help_decenc = ('''
+Files will be converted to the file type you select here
+''')
+help_qty = ('''
+The converted file retains a specific percentage of the 
+original's quality, depending on what you select here
+
+Maximum = 100%
+Decent = 85%
+Medium = 50%
+Low = 25%
+''')
+help_chosedir = ('''
+All compatible files in the folder specified
+here will be converted to the desired file type
+
+Other files and originals will remain intact
+
+Enter the folder path in this format:
+/home/user/Pictures
 ''')
 
 #
