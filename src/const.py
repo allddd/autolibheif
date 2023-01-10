@@ -1,31 +1,28 @@
 #
 num_prompt = '''Type a number and confirm
 ==> '''
+def_prompt = '''Type a number and confirm 
+(leave blank for default)
+==> '''
 dir_prompt = '''
 Type in full path to the photos folder and confirm
 (leave blank to return to the main menu)
 ==> '''
-def_prompt = '''Type a number and confirm 
-(leave blank for default)
-==> '''
-enter = 'Press Enter to continue'
 
 #
-undef_errmsg = 'Something went wrong'
-num_errmsg = 'Please enter a valid number'
-dir_errmsg = 'Specified directory does not exist'
-empty_errmsg = 'Specified directory is empty'
-nofiles_errmsg = 'There are no files to convert in the specified directory'
+undef_err = 'Something went wrong'
+num_err = 'Please enter a valid number'
+dir_err = 'Specified directory does not exist'
+empty_err = 'Specified directory is empty'
+nofiles_err = 'There are no files to convert in the specified directory'
 
 #
-new_row = '''
+row = '''
 '''
-dirchosen_txt = '''
-Looking for files in'''
-succesconv_txt = '''
-Successfully converted'''
-qty_txt = '''
-Select the desired conversion quality'''
+enter = 'Press Enter to continue'
+dir_txt = 'Looking for files in'
+succ_txt = 'Successfully converted'
+qty_txt = 'Select the desired conversion quality'
 
 #
 main_menu = ('''
@@ -57,7 +54,7 @@ help_menu = '''
 '''
 
 #
-Help = ('''
+help_main = ('''
 Autolibheif is a Linux CLI utility for convenient
 encoding and decoding of the HEIF/HEIC file format
 
@@ -79,7 +76,7 @@ Decent = 85%
 Medium = 50%
 Low = 25%
 ''')
-help_chosedir = ('''
+help_dir = ('''
 All compatible files in the folder specified
 here will be converted to the desired file type
 
@@ -90,6 +87,7 @@ Enter the folder path in this format:
 ''')
 
 #
+github = 'https://github.com/allddd/autolibheif'
 head = '''
  ▄▀▄ █ █ ▀█▀ ▄▀▄ █   █ ██▄ █▄█ ██▀ █ █▀
  █▀█ ▀▄█  █  ▀▄▀ █▄▄ █ █▄█ █ █ █▄▄ █ █▀

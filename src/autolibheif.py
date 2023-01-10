@@ -20,11 +20,11 @@ def main():
         usr_inp = input(num_prompt)
 
         if usr_inp == '1':
-            decode_menu()
+            decodemenu()
             break
 
         elif usr_inp == '2':
-            encode_menu()
+            encodemenu()
             break
 
         elif usr_inp == '3':
@@ -40,12 +40,12 @@ def main():
             quit()
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
 
-def decode_menu():
+def decodemenu():
     global wish_ext
 
     while True:
@@ -58,12 +58,12 @@ def decode_menu():
 
         if usr_inp == '1':
             wish_ext = '.jpg'
-            dec_qty()
+            decqty()
             break
 
         elif usr_inp == '2':
             wish_ext = '.png'
-            dec_qty()
+            decqty()
             break
 
         elif usr_inp == '3':
@@ -72,16 +72,16 @@ def decode_menu():
 
         elif usr_inp == 'h':
             print(help_decenc)
-            goback()
+            ent()
             continue
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
 
-def encode_menu():
+def encodemenu():
     global wish_ext
 
     while True:
@@ -94,12 +94,12 @@ def encode_menu():
 
         if usr_inp == '1':
             wish_ext = '.HEIC'
-            enc_qty()
+            encqty()
             break
 
         elif usr_inp == '2':
             wish_ext = '.HEIF'
-            enc_qty()
+            encqty()
             break
 
         elif usr_inp == '3':
@@ -108,11 +108,11 @@ def encode_menu():
 
         elif usr_inp == 'h':
             print(help_decenc)
-            goback()
+            ent()
             continue
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
@@ -122,7 +122,7 @@ def helpmenu():
 
         clear()
         print(head)
-        print(Help)
+        print(help_main)
         print(help_menu)
 
         usr_inp = input(def_prompt)
@@ -136,52 +136,52 @@ def helpmenu():
             break
 
         elif usr_inp == '2':
-            webbrowser.open('https://github.com/allddd/autolibheif')
+            webbrowser.open(github)
             main()
             break
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
 
 # Quality select
-def dec_qty():
+def decqty():
     global wish_qty
 
     while True:
 
         clear()
         print(head)
-        print(qty_txt)
+        print(f'{row}{qty_txt}')
         print(qty_menu)
 
         usr_inp = input(def_prompt)
 
         if (not usr_inp):
             wish_qty = '100'
-            dec_chosedir()
+            decdir()
             break
 
         elif usr_inp == '1':
             wish_qty = '100'
-            dec_chosedir()
+            decdir()
             break
 
         elif usr_inp == '2':
             wish_qty = '85'
-            dec_chosedir()
+            decdir()
             break
 
         elif usr_inp == '3':
             wish_qty = '50'
-            dec_chosedir()
+            decdir()
             break
 
         elif usr_inp == '4':
             wish_qty = '25'
-            dec_chosedir()
+            decdir()
             break
 
         elif usr_inp == '5':
@@ -190,50 +190,50 @@ def dec_qty():
 
         elif usr_inp == 'h':
             print(help_qty)
-            goback()
+            ent()
             continue
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
 
-def enc_qty():
+def encqty():
     global wish_qty
 
     while True:
 
         clear()
         print(head)
-        print(qty_txt)
+        print(f'{row}{qty_txt}')
         print(qty_menu)
 
         usr_inp = input(def_prompt)
 
         if (not usr_inp):
             wish_qty = '-L'
-            enc_chosedir()
+            encdir()
             break
 
         elif usr_inp == '1':
             wish_qty = '-L'
-            enc_chosedir()
+            encdir()
             break
 
         elif usr_inp == '2':
             wish_qty = '85'
-            enc_chosedir()
+            encdir()
             break
 
         elif usr_inp == '3':
             wish_qty = '50'
-            enc_chosedir()
+            encdir()
             break
 
         elif usr_inp == '4':
             wish_qty = '25'
-            enc_chosedir()
+            encdir()
             break
 
         elif usr_inp == '5':
@@ -242,17 +242,17 @@ def enc_qty():
 
         elif usr_inp == 'h':
             print(help_qty)
-            goback()
+            ent()
             continue
 
         else:
-            print(num_errmsg)
+            print(num_err)
             time.sleep(1)
             continue
 
 
 # Directory select
-def dec_chosedir():
+def decdir():
     global wish_dir
 
     while True:
@@ -266,16 +266,16 @@ def dec_chosedir():
             break
 
         elif wish_dir == 'h':
-            print(help_chosedir)
-            goback()
+            print(help_dir)
+            ent()
             continue
 
         elif os.path.isdir(wish_dir):
-            print(f'{dirchosen_txt} {wish_dir}{new_row}')
+            print(f'{row}{dir_txt} {wish_dir}{row}')
 
             if len(os.listdir(wish_dir)) == 0:
-                print(empty_errmsg)
-                goback()
+                print(empty_err)
+                ent()
                 continue
 
             else:
@@ -297,17 +297,17 @@ def dec_chosedir():
                         break
 
                 else:
-                    print(nofiles_errmsg)
-                    goback()
+                    print(nofiles_err)
+                    ent()
                     continue
 
         else:
-            print(f'{new_row}{dir_errmsg}')
-            goback()
+            print(f'{row}{dir_err}')
+            ent()
             continue
 
 
-def enc_chosedir():
+def encdir():
     global wish_dir
 
     while True:
@@ -321,16 +321,16 @@ def enc_chosedir():
             break
 
         elif wish_dir == 'h':
-            print(help_chosedir)
-            goback()
+            print(help_dir)
+            ent()
             continue
 
         elif os.path.isdir(wish_dir):
-            print(f'{dirchosen_txt} {wish_dir}{new_row}')
+            print(f'{row}{dir_txt} {wish_dir}{row}')
 
             if len(os.listdir(wish_dir)) == 0:
-                print(empty_errmsg)
-                goback()
+                print(empty_err)
+                ent()
                 continue
 
             else:
@@ -352,13 +352,13 @@ def enc_chosedir():
                         break
 
                 else:
-                    print(nofiles_errmsg)
-                    goback()
+                    print(nofiles_err)
+                    ent()
                     continue
 
         else:
-            print(f'{new_row}{dir_errmsg}')
-            goback()
+            print(f'{row}{dir_err}')
+            ent()
             continue
 
 
@@ -394,14 +394,14 @@ def decode():
         conv_num = new_fnum - fnum
 
         if conv_num > 0:
-            print(f'{succesconv_txt} {conv_num} files')
+            print(f'{row}{succ_txt} {conv_num} files')
             os.chdir(cwd)
-            goback()
+            ent()
             main()
 
         else:
-            print(undef_errmsg)
-            goback()
+            print(undef_err)
+            ent()
             os.chdir(cwd)
             main()
 
@@ -437,14 +437,14 @@ def encode():
         conv_num = new_fnum - fnum
 
         if conv_num > 0:
-            print(f'{succesconv_txt} {conv_num} files')
+            print(f'{row}{succ_txt} {conv_num} files')
             os.chdir(cwd)
-            goback()
+            ent()
             main()
 
         else:
-            print(undef_errmsg)
-            goback()
+            print(undef_err)
+            ent()
             os.chdir(cwd)
             main()
 
@@ -454,6 +454,6 @@ def clear():
     os.system('clear')
 
 
-def goback():
+def ent():
     print(enter)
     os.system('read -s')
