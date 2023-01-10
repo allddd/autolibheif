@@ -4,10 +4,6 @@ import subprocess
 import webbrowser
 from .const import *
 
-wish_ext = None
-wish_qty = None
-wish_dir = None
-
 
 # Menus
 def main():
@@ -20,11 +16,11 @@ def main():
         usr_inp = input(num_prompt)
 
         if usr_inp == '1':
-            decodemenu()
+            decode(ext=decodemenu(), qty=decqty(), dirr=decdir())
             break
 
         elif usr_inp == '2':
-            encodemenu()
+            encode(ext=encodemenu(), qty=encqty(), dirr=encdir())
             break
 
         elif usr_inp == '3':
@@ -46,8 +42,6 @@ def main():
 
 
 def decodemenu():
-    global wish_ext
-
     while True:
 
         clear()
@@ -57,14 +51,12 @@ def decodemenu():
         usr_inp = input(num_prompt)
 
         if usr_inp == '1':
-            wish_ext = '.jpg'
-            decqty()
-            break
+            ext = '.jpg'
+            return ext
 
         elif usr_inp == '2':
-            wish_ext = '.png'
-            decqty()
-            break
+            ext = '.png'
+            return ext
 
         elif usr_inp == '3':
             main()
@@ -82,8 +74,6 @@ def decodemenu():
 
 
 def encodemenu():
-    global wish_ext
-
     while True:
 
         clear()
@@ -93,14 +83,12 @@ def encodemenu():
         usr_inp = input(num_prompt)
 
         if usr_inp == '1':
-            wish_ext = '.HEIC'
-            encqty()
-            break
+            ext = '.HEIC'
+            return ext
 
         elif usr_inp == '2':
-            wish_ext = '.HEIF'
-            encqty()
-            break
+            ext = '.HEIF'
+            return ext
 
         elif usr_inp == '3':
             main()
@@ -148,8 +136,6 @@ def helpmenu():
 
 # Quality select
 def decqty():
-    global wish_qty
-
     while True:
 
         clear()
@@ -160,29 +146,24 @@ def decqty():
         usr_inp = input(def_prompt)
 
         if (not usr_inp):
-            wish_qty = '100'
-            decdir()
-            break
+            qty = '100'
+            return qty
 
         elif usr_inp == '1':
-            wish_qty = '100'
-            decdir()
-            break
+            qty = '100'
+            return qty
 
         elif usr_inp == '2':
-            wish_qty = '85'
-            decdir()
-            break
+            qty = '85'
+            return qty
 
         elif usr_inp == '3':
-            wish_qty = '50'
-            decdir()
-            break
+            qty = '50'
+            return qty
 
         elif usr_inp == '4':
-            wish_qty = '25'
-            decdir()
-            break
+            qty = '25'
+            return qty
 
         elif usr_inp == '5':
             main()
@@ -200,8 +181,6 @@ def decqty():
 
 
 def encqty():
-    global wish_qty
-
     while True:
 
         clear()
@@ -212,29 +191,24 @@ def encqty():
         usr_inp = input(def_prompt)
 
         if (not usr_inp):
-            wish_qty = '-L'
-            encdir()
-            break
+            qty = '-L'
+            return qty
 
         elif usr_inp == '1':
-            wish_qty = '-L'
-            encdir()
-            break
+            qty = '-L'
+            return qty
 
         elif usr_inp == '2':
-            wish_qty = '85'
-            encdir()
-            break
+            qty = '85'
+            return qty
 
         elif usr_inp == '3':
-            wish_qty = '50'
-            encdir()
-            break
+            qty = '50'
+            return qty
 
         elif usr_inp == '4':
-            wish_qty = '25'
-            encdir()
-            break
+            qty = '25'
+            return qty
 
         elif usr_inp == '5':
             main()
@@ -253,48 +227,42 @@ def encqty():
 
 # Directory select
 def decdir():
-    global wish_dir
-
     while True:
 
         clear()
         print(head)
-        wish_dir = input(dir_prompt)
+        dirr = input(dir_prompt)
 
-        if (not wish_dir):
+        if (not dirr):
             main()
             break
 
-        elif wish_dir == 'h':
+        elif dirr == 'h':
             print(help_dir)
             ent()
             continue
 
-        elif os.path.isdir(wish_dir):
-            print(f'{row}{dir_txt} {wish_dir}{row}')
+        elif os.path.isdir(dirr):
+            print(f'{row}{dir_txt} {dirr}{row}')
 
-            if len(os.listdir(wish_dir)) == 0:
+            if len(os.listdir(dirr)) == 0:
                 print(empty_err)
                 ent()
                 continue
 
             else:
-                for pht in os.listdir(wish_dir):
+                for pht in os.listdir(dirr):
                     if pht.endswith('.HEIC'):
-                        decode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.heic'):
-                        decode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.HEIF'):
-                        decode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.heif'):
-                        decode()
-                        break
+                        return dirr
 
                 else:
                     print(nofiles_err)
@@ -308,48 +276,42 @@ def decdir():
 
 
 def encdir():
-    global wish_dir
-
     while True:
 
         clear()
         print(head)
-        wish_dir = input(dir_prompt)
+        dirr = input(dir_prompt)
 
-        if (not wish_dir):
+        if (not dirr):
             main()
             break
 
-        elif wish_dir == 'h':
+        elif dirr == 'h':
             print(help_dir)
             ent()
             continue
 
-        elif os.path.isdir(wish_dir):
-            print(f'{row}{dir_txt} {wish_dir}{row}')
+        elif os.path.isdir(dirr):
+            print(f'{row}{dir_txt} {dirr}{row}')
 
-            if len(os.listdir(wish_dir)) == 0:
+            if len(os.listdir(dirr)) == 0:
                 print(empty_err)
                 ent()
                 continue
 
             else:
-                for pht in os.listdir(wish_dir):
+                for pht in os.listdir(dirr):
                     if pht.endswith('.jpg'):
-                        encode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.JPG'):
-                        encode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.png'):
-                        encode()
-                        break
+                        return dirr
 
                     elif pht.endswith('.PNG'):
-                        encode()
-                        break
+                        return dirr
 
                 else:
                     print(nofiles_err)
@@ -363,31 +325,31 @@ def encdir():
 
 
 # Converting
-def decode():
+def decode(ext, qty, dirr):
     cwd = os.getcwd()
-    os.chdir(wish_dir)
+    os.chdir(dirr)
     fnum = len(os.listdir())
 
     for pht in os.listdir():
         if pht.endswith('.HEIC'):
             name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
 
         elif pht.endswith('.heic'):
             name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
 
         elif pht.endswith('.HEIF'):
             name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
 
         elif pht.endswith('.heif'):
             name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-convert', '-q', wish_qty, '--quiet', pht, name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
 
     else:
         new_fnum = len(os.listdir())
@@ -406,31 +368,31 @@ def decode():
             main()
 
 
-def encode():
+def encode(ext, qty, dirr):
     cwd = os.getcwd()
-    os.chdir(wish_dir)
+    os.chdir(dirr)
     fnum = len(os.listdir())
 
     for pht in os.listdir():
         if pht.endswith('.jpg'):
             name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
 
         elif pht.endswith('.JPG'):
             name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
 
         elif pht.endswith('.png'):
             name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
 
         elif pht.endswith('.PNG'):
             name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{wish_ext}')
-            subprocess.run(['heif-enc', '-q', wish_qty, pht, '-o', name_wo + wish_ext])
+            print(f'Converting {pht} to {name_wo}{ext}')
+            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
 
     else:
         new_fnum = len(os.listdir())
