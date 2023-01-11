@@ -5,6 +5,10 @@ import webbrowser
 from .const import *
 
 
+dec_ext = ('.heif', '.HEIF', '.heic', '.HEIC')
+enc_ext = ('.jpg', '.JPG', '.png', '.PNG')
+
+
 # Menus
 def main():
     while True:
@@ -252,16 +256,7 @@ def decdir():
 
             else:
                 for pht in os.listdir(dirr):
-                    if pht.endswith('.HEIC'):
-                        return dirr
-
-                    elif pht.endswith('.heic'):
-                        return dirr
-
-                    elif pht.endswith('.HEIF'):
-                        return dirr
-
-                    elif pht.endswith('.heif'):
+                    if pht.endswith(dec_ext):
                         return dirr
 
                 else:
@@ -301,16 +296,7 @@ def encdir():
 
             else:
                 for pht in os.listdir(dirr):
-                    if pht.endswith('.jpg'):
-                        return dirr
-
-                    elif pht.endswith('.JPG'):
-                        return dirr
-
-                    elif pht.endswith('.png'):
-                        return dirr
-
-                    elif pht.endswith('.PNG'):
+                    if pht.endswith(enc_ext):
                         return dirr
 
                 else:
@@ -331,22 +317,7 @@ def decode(ext, qty, dirr):
     fnum = len(os.listdir())
 
     for pht in os.listdir():
-        if pht.endswith('.HEIC'):
-            name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
-
-        elif pht.endswith('.heic'):
-            name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
-
-        elif pht.endswith('.HEIF'):
-            name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
-
-        elif pht.endswith('.heif'):
+        if pht.endswith(dec_ext):
             name_wo = pht[:-5]
             print(f'Converting {pht} to {name_wo}{ext}')
             subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
@@ -374,22 +345,7 @@ def encode(ext, qty, dirr):
     fnum = len(os.listdir())
 
     for pht in os.listdir():
-        if pht.endswith('.jpg'):
-            name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
-
-        elif pht.endswith('.JPG'):
-            name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
-
-        elif pht.endswith('.png'):
-            name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
-
-        elif pht.endswith('.PNG'):
+        if pht.endswith(enc_ext):
             name_wo = pht[:-4]
             print(f'Converting {pht} to {name_wo}{ext}')
             subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
