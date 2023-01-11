@@ -255,8 +255,8 @@ def decdir():
                 continue
 
             else:
-                for pht in os.listdir(dirr):
-                    if pht.endswith(dec_ext):
+                for file in os.listdir(dirr):
+                    if file.endswith(dec_ext):
                         return dirr
 
                 else:
@@ -295,8 +295,8 @@ def encdir():
                 continue
 
             else:
-                for pht in os.listdir(dirr):
-                    if pht.endswith(enc_ext):
+                for file in os.listdir(dirr):
+                    if file.endswith(enc_ext):
                         return dirr
 
                 else:
@@ -316,11 +316,12 @@ def decode(ext, qty, dirr):
     os.chdir(dirr)
     fnum = len(os.listdir())
 
-    for pht in os.listdir():
-        if pht.endswith(dec_ext):
-            name_wo = pht[:-5]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-convert', '-q', qty, '--quiet', pht, name_wo + ext])
+    for file in os.listdir():
+        if file.endswith(dec_ext):
+            name = file[:-5]
+            print(f'Converting {file} to {name}{ext}')
+            subprocess.run(['heif-convert', '-q', qty, file, name + ext],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
 
     else:
         new_fnum = len(os.listdir())
@@ -344,11 +345,12 @@ def encode(ext, qty, dirr):
     os.chdir(dirr)
     fnum = len(os.listdir())
 
-    for pht in os.listdir():
-        if pht.endswith(enc_ext):
-            name_wo = pht[:-4]
-            print(f'Converting {pht} to {name_wo}{ext}')
-            subprocess.run(['heif-enc', '-q', qty, pht, '-o', name_wo + ext])
+    for file in os.listdir():
+        if file.endswith(enc_ext):
+            name = file[:-4]
+            print(f'Converting {file} to {name}{ext}')
+            subprocess.run(['heif-enc', '-q', qty, file, '-o', name + ext],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
 
     else:
         new_fnum = len(os.listdir())
