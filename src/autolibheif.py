@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import subprocess
 import webbrowser
@@ -37,7 +38,7 @@ def main():
 
         elif usr_inp == '4':
             clear()
-            quit()
+            sys.exit(0)
 
         else:
             print(num_err)
